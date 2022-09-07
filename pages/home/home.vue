@@ -36,12 +36,14 @@
           <!-- 左侧大图片的盒子 -->
           <view class="left-img-box">
             <image class="left-img" :src="item.product_list[0].image_src"
+              @click="goGoodsList(item.product_list[0].navigator_url)"
               :style="{width:item.product_list[0].image_width+'rpx'}"></image>
           </view>
           <!-- 右侧 4 个小图片的盒子 -->
           <view class="right-img-box">
             <view class="right-img-item" v-for="(item2,i) in item.product_list" :key="i" v-if="i!==0">
-              <image class="image" :src="item2.image_src" :style="{width:item2.image_width+'rpx'}"></image>
+              <image class="image" @click="goGoodsList(item2.navigator_url)" :src="item2.image_src"
+                :style="{width:item2.image_width+'rpx'}"></image>
             </view>
           </view>
         </view>
@@ -97,6 +99,12 @@
             url: '/pages/cate/cate'
           })
         }
+      },
+      // 跳商品列表页
+      goGoodsList(url) {
+        uni.navigateTo({
+          url: '/subpkg/goods_list/goods_list?' + url.split('?')[1]
+        })
       }
     },
     onLoad() {

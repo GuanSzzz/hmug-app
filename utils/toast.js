@@ -14,6 +14,14 @@ toast.err = function(title, duration = 3000) {
   })
 }
 
+toast.loading = function(title) {
+  uni.showToast({
+    title,
+    icon: 'loading',
+
+  })
+}
+
 
 toast.success = function(title, duration = 3000) {
   uni.showToast({
